@@ -17,6 +17,7 @@ func _ready():
 	self.widget = self.color_rect
 	self.w_tran.setWidgetRect(self.widget.get_rect())
 
+# 
 func _on_TransformTool_resized():
 	var rect = self.w_tran.get_rect()
 	self.widget.position = rect.position + Vector2(20,20)
