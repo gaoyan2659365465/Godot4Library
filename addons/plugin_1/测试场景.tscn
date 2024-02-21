@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://daymx63ekv6i8"]
+
+[ext_resource type="Texture2D" uid="uid://4ocfsqmgi2om" path="res://icon.svg" id="1_k3p6m"]
+
+[node name="测试场景" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 41.0
+offset_top = 44.0
+offset_right = 306.0
+offset_bottom = 195.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(395, 118)
+texture = ExtResource("1_k3p6m")

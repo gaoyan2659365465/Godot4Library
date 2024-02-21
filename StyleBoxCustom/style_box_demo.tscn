@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfiolv5e8bkme"]
+
+[ext_resource type="Script" path="res://StyleBoxCustom/style_box_custom.gd" id="1_dkk1f"]
+
+[sub_resource type="Curve2D" id="Curve2D_wtkdn"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 68.4835, -3.81784, 0, 0, 0, 0, 191.517, 67.2153, 0, 0, 0, 0, 194.568, 70.116, 0, 0, 0, 0, 195.965, 74.0882, 0, 0, 0, 0, 195.399, 78.2605, 0, 0, 0, 0, 191.517, 82.7847, 0, 0, 0, 0, 68.4835, 153.818, 0, 0, 0, 0, 64.4455, 155.011, 0, 0, 0, 0, 60.3073, 154.234, 0, 0, 0, 0, 56.9769, 151.657, 0, 0, 0, 0, 55, 146.033, 0, 0, 0, 0, 55, 3.96686, 0, 0, 0, 0, 55.9861, -0.126503, 0, 0, 0, 0, 58.728, -3.32178, 0, 0, 0, 0, 62.6242, -4.91793)
+}
+point_count = 15
+
+[sub_resource type="StyleBox" id="StyleBox_bu67u"]
+resource_local_to_scene = false
+resource_name = ""
+content_margin_left = -1.0
+content_margin_top = -1.0
+content_margin_right = -1.0
+content_margin_bottom = -1.0
+script = ExtResource("1_dkk1f")
+edge = 3
+color = Color(1, 0.319434, 0.304512, 1)
+radius = 100.0
+rotate = 0.0
+curve = SubResource("Curve2D_wtkdn")
+delta = 8.989
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 369.0
+offset_bottom = 332.0
+theme_override_styles/panel = SubResource("StyleBox_bu67u")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm08smda4c0iu"]
+
+[ext_resource type="Script" path="res://TransformTool/transform_tool_demo_level.gd" id="1_aku7u"]
+
+[node name="TransformToolDemoLevel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aku7u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 126.0
+offset_right = 361.0
+offset_bottom = 290.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 187.0
+offset_right = 713.0
+offset_bottom = 443.0
+color = Color(0.0685089, 0.647682, 1, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Button" type="Button" parent="CanvasLayer"]
+offset_left = 44.0
+offset_top = 48.0
+offset_right = 140.0
+offset_bottom = 93.0
+text = "切换"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]
