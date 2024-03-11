@@ -15,6 +15,14 @@ run/main_scene="res://addons/plugin_0/测试文件.txt"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UUID="*res://PaintTool/uuid.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

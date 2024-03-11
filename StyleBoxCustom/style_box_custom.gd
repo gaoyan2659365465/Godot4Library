@@ -1,6 +1,5 @@
 @tool
 class_name StyleBoxCustom extends StyleBox
-#RenderingServer
 
 
 @export_range(3,30) var edge = 3:

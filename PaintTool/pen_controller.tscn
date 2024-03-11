@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk5quqcarerrc"]
+
+[ext_resource type="Script" path="res://PaintTool/pen_controller.gd" id="1_vwdd1"]
+
+[node name="PenController" type="Panel"]
+offset_right = 329.0
+offset_bottom = 336.0
+script = ExtResource("1_vwdd1")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 95.0
+offset_top = 23.0
+offset_right = 312.0
+offset_bottom = 65.0
+min_value = 1.0
+value = 5.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 30.0
+offset_right = 94.0
+offset_bottom = 53.0
+text = "笔刷尺寸："
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 79.0
+offset_right = 94.0
+offset_bottom = 102.0
+text = "笔刷颜色："
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 78.0
+offset_right = 129.0
+offset_bottom = 106.0
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 128.0
+offset_right = 94.0
+offset_bottom = 151.0
+text = "切换图层："
+
+[node name="Tree" type="Tree" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 166.0
+offset_right = 313.0
+offset_bottom = 317.0
+mouse_filter = 1
+
+[node name="PopupMenu" type="PopupMenu" parent="Tree"]
+size = Vector2i(108, 100)
+item_count = 2
+item_0/text = "复制A通道"
+item_0/id = 0
+item_1/text = "粘贴到遮罩"
+item_1/id = 1
+
+[node name="CheckButton" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 124.0
+offset_right = 316.0
+offset_bottom = 158.0
+text = "画遮罩"
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
+[connection signal="gui_input" from="Tree" to="." method="_on_tree_gui_input"]
+[connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]
+[connection signal="id_pressed" from="Tree/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]

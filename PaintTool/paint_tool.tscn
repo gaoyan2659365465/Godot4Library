@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=3 uid="uid://byddedfqo0doy"]
+
+[ext_resource type="Script" path="res://PaintTool/paint_tool.gd" id="1_8jlt6"]
+[ext_resource type="Script" path="res://PaintTool/drag_camera2d.gd" id="2_3q5rl"]
+[ext_resource type="Shader" path="res://PaintTool/paint_tool.gdshader" id="3_ae56t"]
+[ext_resource type="PackedScene" uid="uid://dk5quqcarerrc" path="res://PaintTool/pen_controller.tscn" id="5_jvd34"]
+[ext_resource type="Shader" path="res://PaintTool/paint_2_tool.gdshader" id="5_t886m"]
+[ext_resource type="Shader" path="res://PaintTool/chessboard.gdshader" id="6_vmxub"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_otlt3"]
+shader = ExtResource("3_ae56t")
+shader_parameter/color = Color(1, 0, 0.18223, 1)
+shader_parameter/angle = 0.88
+
+[sub_resource type="Gradient" id="Gradient_e137u"]
+offsets = PackedFloat32Array(0.933333, 1)
+colors = PackedColorArray(1, 1, 1, 0.792157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x0brq"]
+gradient = SubResource("Gradient_e137u")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.893162, 0.24359)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knqcs"]
+shader = ExtResource("5_t886m")
+shader_parameter/color = Color(1, 0, 0.18223, 1)
+shader_parameter/angle = 0.88
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_56fle"]
+shader = ExtResource("6_vmxub")
+shader_parameter/size = 10.0
+shader_parameter/alpha = 1.0
+shader_parameter/color1 = Color(0.7, 0.7, 0.7, 1)
+shader_parameter/color2 = Color(1, 1, 1, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/scale = Vector2(0, 0)
+shader_parameter/rect_size = Vector2(0, 0)
+shader_parameter/follow_movement = false
+shader_parameter/follow_scale = false
+
+[node name="PaintTool" type="Node2D"]
+script = ExtResource("1_8jlt6")
+
+[node name="DragCamera2D" type="Camera2D" parent="."]
+position = Vector2(579, 323)
+script = ExtResource("2_3q5rl")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(64, 64)
+render_target_update_mode = 4
+
+[node name="Drawing" type="TextureRect" parent="SubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_otlt3")
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_x0brq")
+expand_mode = 1
+
+[node name="Drawing2" type="TextureRect" parent="SubViewport"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_knqcs")
+offset_right = 64.0
+offset_bottom = 64.0
+texture = SubResource("GradientTexture2D_x0brq")
+expand_mode = 1
+
+[node name="Chessboard" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_56fle")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -256.0
+offset_right = 1792.0
+offset_bottom = 768.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PenController" parent="CanvasLayer" instance=ExtResource("5_jvd34")]
+metadata/_edit_lock_ = true
+
+[connection signal="color_changed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_color_changed"]
+[connection signal="item_selected" from="CanvasLayer/PenController" to="." method="_on_pen_controller_item_selected"]
+[connection signal="mask_toggled" from="CanvasLayer/PenController" to="." method="_on_pen_controller_mask_toggled"]
+[connection signal="menu_id_pressed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_menu_id_pressed"]
+[connection signal="move_layer" from="CanvasLayer/PenController" to="." method="_on_pen_controller_move_layer"]
+[connection signal="value_changed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_value_changed"]
