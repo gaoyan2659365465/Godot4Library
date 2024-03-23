@@ -1,0 +1,9 @@
+[configuration]
+
+entry_symbol = "example_library_init"
+compatibility_minimum = "4.3"
+
+[libraries]
+windows.debug.x86_64 = "res://addons/pygde/bin/libgdexample.windows.template_debug.dev.x86_64.dll"
+}
+

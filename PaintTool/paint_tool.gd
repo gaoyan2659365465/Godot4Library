@@ -173,6 +173,8 @@ func _on_pen_controller_mask_toggled(toggled_on):
 var images = []
 # Tree右键菜单选项点击事件
 func _on_pen_controller_menu_id_pressed(uuid, menu_id):
+	if menu_id == 0:
+		images.clear()
 	var n = 0
 	for i in sprites:
 		var a = i.getSpriteForUUID(uuid)
