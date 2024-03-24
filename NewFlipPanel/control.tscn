@@ -1,0 +1,469 @@
+[gd_scene load_steps=28 format=3 uid="uid://datw53maba0a6"]
+
+[ext_resource type="Script" path="res://NewFlipPanel/control.gd" id="1_co0na"]
+[ext_resource type="Shader" path="res://FlipPanel/perspective.gdshader" id="1_dn80a"]
+[ext_resource type="Texture2D" uid="uid://ciytv66d5b2im" path="res://FlipPanel/select2_panel.png" id="2_1pvq1"]
+[ext_resource type="Texture2D" uid="uid://d3d5vrmxlcgvn" path="res://FlipPanel/select_panel.png" id="3_hrq8l"]
+[ext_resource type="Shader" path="res://FlipPanel/flow_light.gdshader" id="5_joih8"]
+[ext_resource type="Shader" path="res://FlipPanel/dissolve.gdshader" id="6_anexw"]
+[ext_resource type="Shader" path="res://FlipPanel/flame_edge.gdshader" id="7_1keg5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t52yp"]
+bg_color = Color(0, 0, 0, 0.568627)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fvda5"]
+shader = ExtResource("1_dn80a")
+shader_parameter/fov = 27.7
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_j2qgs"]
+font_size = 106
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_05fle"]
+shader = ExtResource("1_dn80a")
+shader_parameter/fov = 27.7
+shader_parameter/cull_back = true
+shader_parameter/y_rot = -180.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_tb2hp"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sh6nv"]
+shader = ExtResource("5_joih8")
+shader_parameter/progress = -1.0
+shader_parameter/angle = 2.271
+shader_parameter/n = 0.168
+
+[sub_resource type="Gradient" id="Gradient_8vpmj"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmcek"]
+gradient = SubResource("Gradient_8vpmj")
+
+[sub_resource type="Animation" id="Animation_7or2g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(531, 721)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-26, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LiuGuang:material:shader_parameter/progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("RongJie:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HuoYan:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("RongJie:material:shader_parameter/progress")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HuoYan:material:shader_parameter/edge_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.906877, 0, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Panel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cv6cq"]
+resource_name = "flip_anim"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [180.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(531, 721), Vector2(323, 721), Vector2(18, 721), Vector2(377, 721), Vector2(531, 721)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Panel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-26, 3), Vector2(35, 3), Vector2(242, 3), Vector2(93, 3), Vector2(-26, 3)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("LiuGuang:material:shader_parameter/progress")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.0, -1.0, 2.0]
+}
+
+[sub_resource type="Animation" id="Animation_74kcb"]
+resource_name = "rongjie_anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RongJie:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HuoYan:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RongJie:material:shader_parameter/progress")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HuoYan:material:shader_parameter/edge_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.906877, 0, 1), Color(1, 0.905882, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Panel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rqp1a"]
+_data = {
+"RESET": SubResource("Animation_7or2g"),
+"flip_anim": SubResource("Animation_cv6cq"),
+"rongjie_anim": SubResource("Animation_74kcb")
+}
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bn5du"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wrekx"]
+noise = SubResource("FastNoiseLite_bn5du")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1soq0"]
+shader = ExtResource("6_anexw")
+shader_parameter/progress = 0.0
+shader_parameter/edge_color = Color(1, 0.681531, 0, 1)
+shader_parameter/angle = -4.76
+shader_parameter/noise = SubResource("NoiseTexture2D_wrekx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_152gt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_da7fe"]
+noise = SubResource("FastNoiseLite_152gt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg04y"]
+shader = ExtResource("7_1keg5")
+shader_parameter/noise_speed = 0.63
+shader_parameter/noise_size = 1.0
+shader_parameter/edge_color = Color(1, 0.906877, 0, 1)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_da7fe")
+
+[sub_resource type="Gradient" id="Gradient_83eab"]
+offsets = PackedFloat32Array(0.994413, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.839216, 0, 0.929412)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_idjtm"]
+gradient = SubResource("Gradient_83eab")
+fill_from = Vector2(0.5, 0)
+fill_to = Vector2(0.5, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_co0na")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -26.0
+offset_top = 3.0
+offset_right = 505.0
+offset_bottom = 724.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_t52yp")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(500, 700)
+render_target_update_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewport"]
+auto_translate_mode = 1
+material = SubResource("ShaderMaterial_fvda5")
+offset_right = 500.0
+offset_bottom = 700.0
+texture = ExtResource("3_hrq8l")
+
+[node name="Label" type="Label" parent="SubViewport/TextureRect2"]
+auto_translate_mode = 1
+layout_mode = 0
+offset_right = 497.0
+offset_bottom = 143.0
+text = "123456"
+label_settings = SubResource("LabelSettings_j2qgs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_05fle")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 700.0
+texture = ExtResource("2_1pvq1")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+auto_translate_mode = 1
+material = SubResource("ShaderMaterial_fvda5")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 700.0
+texture = SubResource("ViewportTexture_tb2hp")
+
+[node name="LiuGuang" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_sh6nv")
+layout_mode = 0
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 503.0
+offset_bottom = 696.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_dmcek")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -651.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(249, 330)
+zoom = Vector2(0.575, 0.575)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rqp1a")
+}
+
+[node name="RongJie" type="TextureRect" parent="."]
+auto_translate_mode = 1
+visible = false
+material = SubResource("ShaderMaterial_1soq0")
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 700.0
+texture = ExtResource("3_hrq8l")
+
+[node name="HuoYan" type="TextureRect" parent="."]
+auto_translate_mode = 1
+visible = false
+material = SubResource("ShaderMaterial_bg04y")
+layout_mode = 0
+offset_right = 505.0
+offset_bottom = 699.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_idjtm")
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
