@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://ora2wdl1v5p"]
+
+[ext_resource type="PackedScene" uid="uid://b1ltoxbp6p81o" path="res://Backpack/back_pack_item.tscn" id="1_rcohi"]
+
+[node name="BackPackItem" instance=ExtResource("1_rcohi")]

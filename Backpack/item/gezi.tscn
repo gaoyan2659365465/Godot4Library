@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://byppddh8tpcjk"]
+
+[ext_resource type="PackedScene" uid="uid://b1ltoxbp6p81o" path="res://Backpack/back_pack_item.tscn" id="1_b6jyh"]
+[ext_resource type="Texture2D" uid="uid://c3o88xo6l6y14" path="res://Backpack/gezi.png" id="2_t2778"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmjcd"]
+radius = 78.5
+height = 157.0
+
+[node name="BackPackItem" instance=ExtResource("1_b6jyh")]
+pos = [[0, 0], [0, 1], [1, 0], [1, 1]]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_tmjcd")
+
+[node name="GridContainer" parent="." index="1"]
+offset_left = -86.0
+offset_right = 118.0
+
+[node name="ItemTexture" parent="." index="2"]
+texture = ExtResource("2_t2778")
+
+[node name="ItemShadow" parent="ItemTexture" index="0"]
+texture = ExtResource("2_t2778")

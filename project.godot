@@ -23,6 +23,10 @@ UUID="*res://PaintTool/uuid.gd"
 
 enabled=PackedStringArray()
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

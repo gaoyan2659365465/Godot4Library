@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1ltoxbp6p81o"]
+
+[ext_resource type="Script" path="res://Backpack/back_pack_item.gd" id="1_ilcwo"]
+[ext_resource type="PackedScene" uid="uid://d31p4n2hyovrq" path="res://Backpack/grid_item.tscn" id="1_m460i"]
+[ext_resource type="Texture2D" uid="uid://dxlcqhrvx5uxc" path="res://Backpack/yumao.png" id="1_os8kv"]
+[ext_resource type="Shader" path="res://Backpack/shadow.gdshader" id="2_2t3cj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bvkuq"]
+friction = 0.91
+bounce = 0.23
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gcdx"]
+radius = 26.5
+height = 160.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28qqq"]
+shader = ExtResource("2_2t3cj")
+shader_parameter/color = Color(0, 0, 0, 0.541176)
+
+[node name="BackPackItem" type="RigidBody2D"]
+mass = 10.0
+physics_material_override = SubResource("PhysicsMaterial_bvkuq")
+script = ExtResource("1_ilcwo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -3)
+shape = SubResource("CapsuleShape2D_7gcdx")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+auto_translate_mode = 1
+visible = false
+offset_left = -46.0
+offset_top = -104.0
+offset_right = 158.0
+offset_bottom = 100.0
+columns = 2
+
+[node name="GridItem" parent="GridContainer" instance=ExtResource("1_m460i")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridContainer" instance=ExtResource("1_m460i")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridContainer" instance=ExtResource("1_m460i")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridContainer" instance=ExtResource("1_m460i")]
+layout_mode = 2
+
+[node name="ItemTexture" type="TextureRect" parent="."]
+offset_left = -96.0
+offset_top = -100.0
+offset_right = 104.0
+offset_bottom = 100.0
+texture = ExtResource("1_os8kv")
+expand_mode = 1
+
+[node name="ItemShadow" type="TextureRect" parent="ItemTexture"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_28qqq")
+layout_mode = 0
+offset_left = 9.0
+offset_top = 8.0
+offset_right = 209.0
+offset_bottom = 208.0
+texture = ExtResource("1_os8kv")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -24.0
+offset_top = -89.0
+offset_right = 27.0
+offset_bottom = 83.0
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]

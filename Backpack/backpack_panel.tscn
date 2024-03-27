@@ -1,0 +1,149 @@
+[gd_scene load_steps=7 format=3 uid="uid://70ckw4wvg3c4"]
+
+[ext_resource type="PackedScene" uid="uid://d31p4n2hyovrq" path="res://Backpack/grid_item.tscn" id="1_demkf"]
+[ext_resource type="Script" path="res://Backpack/backpack_panel.gd" id="1_tuh7n"]
+[ext_resource type="PackedScene" uid="uid://ora2wdl1v5p" path="res://Backpack/item/yumao.tscn" id="3_ybddt"]
+[ext_resource type="PackedScene" uid="uid://byppddh8tpcjk" path="res://Backpack/item/gezi.tscn" id="4_sivee"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hid7p"]
+size = Vector2(1616, 84)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_olmcl"]
+size = Vector2(210, 833)
+
+[node name="BackpackPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tuh7n")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -258.0
+offset_right = 258.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="GridItem" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem2" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem3" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem4" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem5" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem6" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem7" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem8" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem9" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem10" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem11" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem12" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem13" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem14" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem15" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem16" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem17" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem18" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem19" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem20" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem21" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem22" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem23" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem24" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="GridItem25" parent="GridContainer" instance=ExtResource("1_demkf")]
+layout_mode = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, -52)
+shape = SubResource("RectangleShape2D_hid7p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(554, 693)
+shape = SubResource("RectangleShape2D_hid7p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1257, 318.5)
+shape = SubResource("RectangleShape2D_olmcl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-110, 318.5)
+shape = SubResource("RectangleShape2D_olmcl")
+
+[node name="BackPackItem3" parent="." instance=ExtResource("3_ybddt")]
+position = Vector2(1008, 243)
+
+[node name="BackPackItem2" parent="." instance=ExtResource("3_ybddt")]
+position = Vector2(876, 246)
+
+[node name="BackPackItem" parent="." instance=ExtResource("4_sivee")]
+position = Vector2(685, 245)
+
+[connection signal="drag" from="BackPackItem3" to="." method="_on_back_pack_item_drag"]
+[connection signal="drag_end" from="BackPackItem3" to="." method="_on_back_pack_item_drag_end"]
+[connection signal="drag_start" from="BackPackItem3" to="." method="_on_back_pack_item_drag_start"]
+[connection signal="drag" from="BackPackItem2" to="." method="_on_back_pack_item_drag"]
+[connection signal="drag_end" from="BackPackItem2" to="." method="_on_back_pack_item_drag_end"]
+[connection signal="drag_start" from="BackPackItem2" to="." method="_on_back_pack_item_drag_start"]
+[connection signal="drag" from="BackPackItem" to="." method="_on_back_pack_item_drag"]
+[connection signal="drag_end" from="BackPackItem" to="." method="_on_back_pack_item_drag_end"]
+[connection signal="drag_start" from="BackPackItem" to="." method="_on_back_pack_item_drag_start"]
