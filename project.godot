@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 UUID="*res://PaintTool/uuid.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray()
@@ -26,7 +30,3 @@ enabled=PackedStringArray()
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0

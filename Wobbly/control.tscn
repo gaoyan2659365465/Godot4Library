@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvfpa5yhxxi56"]
+
+[ext_resource type="Shader" path="res://Wobbly/wobbly.gdshader" id="1_5ouya"]
+[ext_resource type="Texture2D" uid="uid://d0p4xjvdbg1b7" path="res://Wobbly/qipao.png" id="2_32eg7"]
+[ext_resource type="FontFile" uid="uid://bimu8w41gjp58" path="res://Wobbly/MiniJYH.ttf" id="3_omlj6"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_26kqp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w7w1x"]
+width = 64
+height = 64
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_26kqp")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qg5w3"]
+shader = ExtResource("1_5ouya")
+shader_parameter/speed = 0.439
+shader_parameter/intensity = 0.022
+shader_parameter/disp_tex = SubResource("NoiseTexture2D_w7w1x")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5ntlm"]
+font = ExtResource("3_omlj6")
+font_size = 56
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Qipao" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_qg5w3")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 18.0
+offset_right = 852.0
+offset_bottom = 525.0
+texture = ExtResource("2_32eg7")
+
+[node name="Label" type="Label" parent="Qipao"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -17.0
+offset_right = -3.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "你好呀，欢迎来到这里"
+label_settings = SubResource("LabelSettings_5ntlm")
+horizontal_alignment = 1
+vertical_alignment = 1
