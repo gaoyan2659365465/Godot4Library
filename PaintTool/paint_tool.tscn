@@ -86,9 +86,18 @@ mouse_filter = 2
 [node name="PenController" parent="CanvasLayer" instance=ExtResource("5_jvd34")]
 metadata/_edit_lock_ = true
 
+[node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
+auto_translate_mode = 1
+offset_left = 97.0
+offset_top = 74.0
+offset_right = 209.0
+offset_bottom = 108.0
+text = "锁定像素"
+
 [connection signal="color_changed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_color_changed"]
 [connection signal="item_selected" from="CanvasLayer/PenController" to="." method="_on_pen_controller_item_selected"]
 [connection signal="mask_toggled" from="CanvasLayer/PenController" to="." method="_on_pen_controller_mask_toggled"]
 [connection signal="menu_id_pressed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_menu_id_pressed"]
 [connection signal="move_layer" from="CanvasLayer/PenController" to="." method="_on_pen_controller_move_layer"]
 [connection signal="value_changed" from="CanvasLayer/PenController" to="." method="_on_pen_controller_value_changed"]
+[connection signal="toggled" from="CanvasLayer/CheckButton" to="." method="_on_check_button_toggled"]

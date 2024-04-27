@@ -48,10 +48,12 @@ func _drop_data(position, data):
 		uuids.append(i.get_meta("uuid"))
 	emit_signal("move_layer",uuids)
 
+
 func _get_drag_data(position):
 	tree.drop_mode_flags = Tree.DROP_MODE_INBETWEEN
 	var item = tree.get_item_at_position(position-tree.position)
 	return item
+
 
 func _on_tree_item_selected():
 	var item = tree.get_selected()
@@ -60,9 +62,6 @@ func _on_tree_item_selected():
 
 func _on_h_slider_value_changed(value):
 	emit_signal("value_changed",value)
-
-func _on_color_picker_button_color_changed(color):
-	emit_signal("color_changed",color)
 
 
 # 画遮罩按钮
@@ -83,3 +82,7 @@ func _on_popup_menu_id_pressed(id):
 	var item = tree.get_selected()
 	var uuid = item.get_meta("uuid")
 	emit_signal("menu_id_pressed",uuid,id)
+
+
+func _on_color_picker_color_changed(color: Color) -> void:
+	emit_signal("color_changed",color)

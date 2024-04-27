@@ -25,7 +25,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/rmsmartshape/plugin.cfg", "res://addons/smallpaint/plugin.cfg")
 
 [input_devices]
 

@@ -17,6 +17,8 @@ func _ready():
 # 新建图层
 func addLayer(uuid):
 	var sprite = Sprite2D.new()
+	# 像素清晰
+	sprite.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	var _mask_material = mask_material.duplicate()
 	var mask_img = Image.create(512,512,true,Image.FORMAT_RGBA8)
 	mask_img.fill(Color(1.0, 1.0, 1.0, 1.0))
@@ -52,6 +54,30 @@ func blend_rect(src: Image, src_rect: Rect2i, dst: Vector2i, is_mask:bool=false)
 		img = tex.get_image()
 	
 	img.blend_rect(src,src_rect,dst)
+	if is_mask:
+		var tex = sprite.material.get("shader_parameter/mask_img")
+		tex.update(img)
+	else:
+		sprite.texture.update(img)
+	return img
+
+func blend_rect_mask(src: Image, src_rect: Rect2i, dst: Vector2i, is_mask:bool=false):
+	var sprite = getSelectLayer()
+	var img = sprite.texture.get_image()
+	# 遮罩模式
+	if is_mask:
+		var tex = sprite.material.get("shader_parameter/mask_img")
+		img = tex.get_image()
+	
+	var new_src = src.get_region(src_rect)
+	var new_rect = src_rect
+	new_rect.position = Vector2i.ZERO
+	new_rect.size = new_src.get_size()
+	
+	var mask_rect = new_rect
+	mask_rect.position = dst
+	var mask = img.get_region(mask_rect)
+	img.blend_rect_mask(new_src,mask,new_rect,dst)
 	if is_mask:
 		var tex = sprite.material.get("shader_parameter/mask_img")
 		tex.update(img)

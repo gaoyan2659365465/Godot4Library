@@ -20,6 +20,8 @@ var is_start_draw = false
 # 是否画遮罩模式
 var is_mask = false
 
+var a = false
+
 func _ready():
 	for i in range(4):
 		for n in range(2):
@@ -104,7 +106,10 @@ func blend_rect(src: Image, src_rect: Rect2, dst: Vector2):
 		rect_clip.position = rect_clip.position.ceil()
 		var local_rect_clip = Rect2(rect_clip.position - dst,rect_clip.size)
 		var local_pos = rect_clip.position - rect.position
-		i.blend_rect(src,local_rect_clip,local_pos,self.is_mask)
+		if not self.a:
+			i.blend_rect(src,local_rect_clip,local_pos,self.is_mask)
+		else:
+			i.blend_rect_mask(src,local_rect_clip,local_pos,self.is_mask)
 
 # 根据曲线缓存点每帧绘画点
 func drawPointsForCurve(size):
@@ -113,8 +118,8 @@ func drawPointsForCurve(size):
 	# 笔刷图越大，频率应该越小
 	var frequency = remap(clamp(size.x,0.0,30.0),0.0,30,80,10)
 	# 由于每帧开销太大所以创建缓存笔迹图像
-	var cache_img_size = Vector2(size.x*(frequency*2.0-1),size.y*(frequency*2.0-1))
-	
+	var cache_img_size = Vector2(size.x*frequency,size.y*frequency)
+	print(cache_img_size)
 	var cache_img = Image.create(cache_img_size.x,cache_img_size.y,false,Image.FORMAT_RGBA8)
 	# 计算曲线缓存点的位置
 	var baked_point = self.path.curve.get_baked_points()
@@ -192,3 +197,8 @@ func _on_pen_controller_menu_id_pressed(uuid, menu_id):
 			img.blend_rect_mask(img3,img2,Rect2(Vector2.ZERO,img.get_size()),Vector2.ZERO)
 			tex.update(img)
 		n += 1
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	self.a = toggled_on
+	print(toggled_on)

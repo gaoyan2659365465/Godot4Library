@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://c88jqjcri281k"]
+
+[ext_resource type="Script" path="res://addons/smallpaint/brush_tool_panel.gd" id="1_xmaxy"]
+
+[node name="BrushToolPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xmaxy")
+
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 2
+offset_right = 298.0
+offset_bottom = 272.0
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="CheckButton" type="CheckButton" parent="."]
+auto_translate_mode = 1
+layout_mode = 0
+offset_left = 314.0
+offset_top = 17.0
+offset_right = 426.0
+offset_bottom = 51.0
+text = "锁定像素"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 68.0
+offset_right = 680.0
+offset_bottom = 108.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "笔刷尺寸："
+metadata/_edit_lock_ = true
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 50.0
+ticks_on_borders = true
+
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
+[connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

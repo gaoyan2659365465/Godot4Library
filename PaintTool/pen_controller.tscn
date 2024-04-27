@@ -24,56 +24,55 @@ offset_right = 94.0
 offset_bottom = 53.0
 text = "笔刷尺寸："
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 14.0
-offset_top = 79.0
-offset_right = 94.0
-offset_bottom = 102.0
-text = "笔刷颜色："
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 78.0
-offset_right = 129.0
-offset_bottom = 106.0
-
 [node name="Label3" type="Label" parent="."]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 128.0
+offset_top = 76.0
 offset_right = 94.0
-offset_bottom = 151.0
+offset_bottom = 99.0
 text = "切换图层："
 
 [node name="Tree" type="Tree" parent="."]
 layout_mode = 0
 offset_left = 16.0
-offset_top = 166.0
+offset_top = 114.0
 offset_right = 313.0
-offset_bottom = 317.0
+offset_bottom = 315.0
 mouse_filter = 1
 
 [node name="PopupMenu" type="PopupMenu" parent="Tree"]
 size = Vector2i(108, 100)
 item_count = 2
 item_0/text = "复制A通道"
-item_0/id = 0
 item_1/text = "粘贴到遮罩"
 item_1/id = 1
 
 [node name="CheckButton" type="CheckButton" parent="."]
 layout_mode = 0
 offset_left = 214.0
-offset_top = 124.0
+offset_top = 72.0
 offset_right = 316.0
-offset_bottom = 158.0
+offset_bottom = 106.0
 text = "画遮罩"
 
+[node name="ColorPicker" type="ColorPicker" parent="."]
+layout_mode = 0
+offset_left = 849.0
+offset_top = 9.0
+offset_right = 1147.0
+offset_bottom = 281.0
+mouse_filter = 0
+deferred_mode = true
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
 [connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
-[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_picker_button_color_changed"]
 [connection signal="gui_input" from="Tree" to="." method="_on_tree_gui_input"]
 [connection signal="item_selected" from="Tree" to="." method="_on_tree_item_selected"]
 [connection signal="id_pressed" from="Tree/PopupMenu" to="." method="_on_popup_menu_id_pressed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
