@@ -1,6 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://c88jqjcri281k"]
+[gd_scene load_steps=12 format=3 uid="uid://c88jqjcri281k"]
 
 [ext_resource type="Script" path="res://addons/smallpaint/brush_tool_panel.gd" id="1_xmaxy"]
+[ext_resource type="Texture2D" uid="uid://5i7k6jdv5iyo" path="res://addons/smallpaint/pen.svg" id="2_00atw"]
+[ext_resource type="ButtonGroup" uid="uid://cfarh3chapllm" path="res://addons/smallpaint/button_group.tres" id="2_8x4s2"]
+[ext_resource type="Texture2D" uid="uid://cumfeounwnqas" path="res://addons/smallpaint/move.svg" id="3_lamwx"]
+[ext_resource type="Texture2D" uid="uid://45yt82v36gbi" path="res://addons/smallpaint/rubber.svg" id="3_s5qh6"]
+[ext_resource type="Texture2D" uid="uid://b457eadoqfcwa" path="res://addons/smallpaint/clip_board.svg" id="6_ox8if"]
+[ext_resource type="Texture2D" uid="uid://b8j26dgvyhbpw" path="res://addons/smallpaint/magic_eraser.svg" id="7_aram1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_divhn"]
+bg_color = Color(0.466667, 0.466667, 0.466667, 1)
+
+[sub_resource type="Gradient" id="Gradient_d2qtb"]
+colors = PackedColorArray(0.188235, 0.188235, 0.188235, 1, 0.188235, 0.188235, 0.188235, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mstii"]
+gradient = SubResource("Gradient_d2qtb")
+width = 22
+height = 22
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6xwbv"]
+gradient = SubResource("Gradient_d2qtb")
+width = 22
+height = 22
 
 [node name="BrushToolPanel" type="Control"]
 layout_mode = 3
@@ -13,8 +35,10 @@ script = ExtResource("1_xmaxy")
 
 [node name="ColorPicker" type="ColorPicker" parent="."]
 layout_mode = 2
-offset_right = 298.0
-offset_bottom = 272.0
+offset_left = 39.0
+offset_right = 337.0
+offset_bottom = 300.0
+scale = Vector2(0.775, 0.775)
 color_modes_visible = false
 sliders_visible = false
 hex_visible = false
@@ -23,17 +47,17 @@ presets_visible = false
 [node name="CheckButton" type="CheckButton" parent="."]
 auto_translate_mode = 1
 layout_mode = 0
-offset_left = 314.0
+offset_left = 331.0
 offset_top = 17.0
-offset_right = 426.0
+offset_right = 443.0
 offset_bottom = 51.0
 text = "锁定像素"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 325.0
+offset_left = 338.0
 offset_top = 68.0
-offset_right = 680.0
+offset_right = 922.0
 offset_bottom = 108.0
 
 [node name="Label" type="Label" parent="HBoxContainer"]
@@ -48,6 +72,144 @@ size_flags_vertical = 1
 max_value = 50.0
 ticks_on_borders = true
 
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 34.0
+offset_bottom = 225.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_divhn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+metadata/_edit_lock_ = true
+
+[node name="btMove" type="TextureButton" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_group = ExtResource("2_8x4s2")
+texture_pressed = SubResource("GradientTexture2D_mstii")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/btMove"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_lamwx")
+expand_mode = 1
+
+[node name="btPen" type="TextureButton" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_group = ExtResource("2_8x4s2")
+texture_pressed = SubResource("GradientTexture2D_mstii")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/btPen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_00atw")
+expand_mode = 1
+
+[node name="btRubber" type="TextureButton" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_group = ExtResource("2_8x4s2")
+texture_pressed = SubResource("GradientTexture2D_6xwbv")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/btRubber"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_s5qh6")
+expand_mode = 1
+
+[node name="btClipBoard" type="TextureButton" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_group = ExtResource("2_8x4s2")
+texture_pressed = SubResource("GradientTexture2D_6xwbv")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/btClipBoard"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_ox8if")
+expand_mode = 1
+
+[node name="btMagicEraser" type="TextureButton" parent="Panel/VBoxContainer"]
+unique_name_in_owner = true
+auto_translate_mode = 1
+layout_mode = 2
+size_flags_horizontal = 4
+toggle_mode = true
+button_group = ExtResource("2_8x4s2")
+texture_pressed = SubResource("GradientTexture2D_6xwbv")
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/btMagicEraser"]
+auto_translate_mode = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_aram1")
+expand_mode = 1
+
 [connection signal="color_changed" from="ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="toggled" from="CheckButton" to="." method="_on_check_button_toggled"]
 [connection signal="value_changed" from="HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btMove" to="." method="_on_bt_move_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btPen" to="." method="_on_bt_pen_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btRubber" to="." method="_on_bt_rubber_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btClipBoard" to="." method="_on_bt_clip_board_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/btMagicEraser" to="." method="_on_bt_magic_eraser_pressed"]

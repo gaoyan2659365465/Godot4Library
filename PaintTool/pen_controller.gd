@@ -18,6 +18,7 @@ func _ready():
 	# 隐藏树的根节点
 	tree.set_hide_root(true)
 
+
 # 添加图层
 func addLayer(i,uuid):
 	var root:TreeItem = tree.create_item()
