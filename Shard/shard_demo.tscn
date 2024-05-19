@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dd23bb2rhf3fo"]
+
+[ext_resource type="PackedScene" uid="uid://bkb08gc03545e" path="res://Shard/shard_emitter.tscn" id="1_3aeea"]
+
+[sub_resource type="GDScript" id="GDScript_uv8o6"]
+script/source = "extends Node2D
+
+
+
+func _ready() -> void:
+	$Sprite2D/ShardEmitter.call_deferred(\"shatter\")
+
+
+"
+
+[sub_resource type="Gradient" id="Gradient_0wges"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wq1dg"]
+gradient = SubResource("Gradient_0wges")
+height = 128
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ur5s8"]
+size = Vector2(724, 66)
+
+[sub_resource type="Gradient" id="Gradient_fsd6d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_smvwm"]
+gradient = SubResource("Gradient_fsd6d")
+
+[node name="ShardDemo" type="Node2D"]
+script = SubResource("GDScript_uv8o6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(183, 141)
+texture = SubResource("GradientTexture2D_wq1dg")
+
+[node name="ShardEmitter" parent="Sprite2D" instance=ExtResource("1_3aeea")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(-82, 452)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(352, 23)
+shape = SubResource("RectangleShape2D_ur5s8")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(355, 22)
+scale = Vector2(11.25, 1)
+texture = SubResource("GradientTexture2D_smvwm")
+metadata/_edit_lock_ = true

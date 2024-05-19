@@ -6,6 +6,7 @@ signal color_changed(color: Color)
 signal toggled(toggled_on: bool)
 signal value_changed(value: float)
 signal pressed(tool_mode: int)
+signal toggled2(toggled_on: bool)
 
 # 更改颜色
 func _on_color_picker_color_changed(color: Color) -> void:
@@ -43,3 +44,7 @@ func _on_bt_clip_board_pressed() -> void:
 func _on_bt_magic_eraser_pressed() -> void:
 	%btMagicEraser.button_pressed = true
 	emit_signal("pressed",4)
+
+# 创建空图像
+func _on_check_button_2_toggled(toggled_on: bool) -> void:
+	emit_signal("toggled2",toggled_on)

@@ -56,6 +56,7 @@ func _ready() -> void:
 	brush_tool_panel.connect("toggled",_on_BrushToolPanel_toggled)
 	brush_tool_panel.connect("value_changed",_on_BrushToolPanel_value_changed)
 	brush_tool_panel.connect("pressed",_on_BrushToolPanel_pressed)
+	brush_tool_panel.connect("toggled2",_on_BrushToolPanel_toggled2)
 	
 func _process(delta: float) -> void:
 	if self.brush.tool_mode != 2:
@@ -83,6 +84,36 @@ func _on_BrushToolPanel_toggled(toggled_on: bool) -> void:
 func _on_BrushToolPanel_value_changed(value: float) -> void:
 	self.brush.drawing_size = Vector2(value,value)
 
+# 创建空图像
+func _on_BrushToolPanel_toggled2(toggled_on: bool) -> void:
+	if toggled_on:
+		self.w_overlay.connect("gui_input",_on_Overlay_gui_input)
+	else:
+		self.w_overlay.disconnect("gui_input",_on_Overlay_gui_input)
+
+var drag_from
+func _on_Overlay_gui_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.is_pressed():
+				drag_from = event.position
+			else:
+				var scene = get_tree().get_edited_scene_root()
+				var tran = scene.get_viewport_transform()
+				var start_pos = tran.affine_inverse() * drag_from
+				var end_pos = tran.affine_inverse() * event.position
+				var size = end_pos-start_pos
+				
+				var sprite = Sprite2D.new()
+				scene.add_child(sprite)
+				sprite.name = "新建图层"
+				sprite.set_owner(scene)
+				var img = Image.create(size.x,size.y,false,Image.FORMAT_RGBA8)
+				img.fill(self.brush.brush_color)
+				sprite.texture = ImageTexture.create_from_image(img)
+				sprite.position = start_pos + size/2
+				#sprite.position = tran.affine_inverse() * (drag_from+(event.position-drag_from)/2)
+				
 
 func _enter_tree() -> void:
 	pass

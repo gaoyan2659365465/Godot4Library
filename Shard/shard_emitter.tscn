@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkb08gc03545e"]
+
+[ext_resource type="Script" path="res://Shard/shard_emitter.gd" id="1_7dhfd"]
+
+[node name="ShardEmitter" type="Node2D"]
+script = ExtResource("1_7dhfd")
+
+[node name="DeleteTimer" type="Timer" parent="."]

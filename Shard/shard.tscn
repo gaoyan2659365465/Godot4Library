@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bagi5pmmr3ter"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_g41gu"]
+friction = 0.9
+
+[node name="Shard" type="RigidBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_g41gu")
+freeze = true
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

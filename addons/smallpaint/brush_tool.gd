@@ -43,11 +43,14 @@ func drawTick(pos) -> void:
 
 # 设置目标精灵图
 func setTarget(target:Sprite2D):
-	self.target_sprite = target
-	var image_tex = ImageTexture.new()
-	image_tex.set_image(target.texture.get_image())
-	self.target_sprite.texture = image_tex
-	self.target_image = target.texture.get_image()
+	if target.texture as ImageTexture:
+		self.target_sprite = target
+		#var image_tex = ImageTexture.new()
+		#image_tex.set_image(target.texture.get_image())
+		#self.target_sprite.texture = image_tex
+		self.target_image = target.texture.get_image()
+	else:
+		print("当前选中的精灵节点的图像类型不是ImageTexture")
 
 # 绘画开始
 func drawStart():
