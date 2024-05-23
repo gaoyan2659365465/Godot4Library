@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cwdq2bwbqd7ka"]
+
+[ext_resource type="Script" path="res://Flyball/flyball.gd" id="1_lork0"]
+[ext_resource type="Script" path="res://Flyball/trail_2d.gd" id="2_b8og7"]
+
+[sub_resource type="Gradient" id="Gradient_3s06q"]
+offsets = PackedFloat32Array(0.613734, 0.811159)
+colors = PackedColorArray(0, 0, 100, 1, 0, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kpsse"]
+gradient = SubResource("Gradient_3s06q")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="Curve" id="Curve_5iyqh"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_0k8cu"]
+offsets = PackedFloat32Array(0.240175, 0.419214)
+colors = PackedColorArray(0, 0, 1, 0.141176, 0.364061, 0.438367, 1, 1)
+
+[sub_resource type="Curve2D" id="Curve2D_akne6"]
+resource_local_to_scene = true
+bake_interval = 2.0
+
+[node name="Flyball" type="Node2D"]
+script = ExtResource("1_lork0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_kpsse")
+
+[node name="Trail2D" type="Line2D" parent="Sprite2D"]
+show_behind_parent = true
+width_curve = SubResource("Curve_5iyqh")
+gradient = SubResource("Gradient_0k8cu")
+script = ExtResource("2_b8og7")
+lenght = 20
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Node"]
+curve = SubResource("Curve2D_akne6")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node/Path2D"]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Node/Path2D/PathFollow2D"]
+remote_path = NodePath("../../../../Sprite2D")
+update_rotation = false

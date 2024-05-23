@@ -5,6 +5,20 @@ var rd:RenderingDevice
 var shader_rd:RID
 var pipeline_rd:RID
 
+
+
+var shader_parameter:PushConstants
+
+class PushConstants:
+	var TexSize:Vector2i = Vector2i.ONE
+	var QueryPosition:Vector2i = Vector2i.ZERO
+	var OperationFlag:int = 0
+	var DisplayMode:int  = 0
+	var PassCounter:int = 0
+	var Threshold:float = 0.25
+	var ColorTarget:Color = Color.GREEN
+
+
 func _ready() -> void:
 	# 创建渲染设备
 	rd = RenderingServer.get_rendering_device()
@@ -55,6 +69,32 @@ func _ready() -> void:
 	var tex_rd = Texture2DRD.new()
 	tex_rd.texture_rd_rid = tex_rd_rid
 	$Icon2.texture = tex_rd
+	
+	#---------------------------------------------------------------------
+	# 创建结构体
+	shader_parameter = PushConstants.new()
+	shader_parameter.TexSize = Vector2(128,128)
+	
+	var input_bytes:PackedByteArray = PackedByteArray()
+	var a:PackedInt32Array = PackedInt32Array()
+	a.push_back(shader_parameter.TexSize.x)
+	a.push_back(shader_parameter.TexSize.y)
+	a.push_back(shader_parameter.QueryPosition.x)
+	a.push_back(shader_parameter.QueryPosition.y)
+	a.push_back(shader_parameter.OperationFlag)
+	a.push_back(shader_parameter.DisplayMode)
+	a.push_back(shader_parameter.PassCounter)
+	var abytes = a.to_byte_array()
+	var b:PackedFloat32Array = PackedFloat32Array()
+	b.push_back(shader_parameter.Threshold)
+	b.push_back(shader_parameter.ColorTarget.r)
+	b.push_back(shader_parameter.ColorTarget.g)
+	b.push_back(shader_parameter.ColorTarget.b)
+	b.push_back(shader_parameter.ColorTarget.a)
+	var bbytes = b.to_byte_array()
+	input_bytes.append_array(abytes)
+	input_bytes.append_array(bbytes)
+	
 	# 创建uniform_set
 	var uniform_set = rd.uniform_set_create([uniform],shader_rd,0)
 	var uniform_set_1 = rd.uniform_set_create([uniform_1],shader_rd,1)
@@ -63,6 +103,7 @@ func _ready() -> void:
 	var compute_list := rd.compute_list_begin()
 	rd.compute_list_bind_compute_pipeline(compute_list, pipeline_rd)
 	# 绑定uniform_set
+	rd.compute_list_set_push_constant(compute_list,input_bytes,input_bytes.size())
 	rd.compute_list_bind_uniform_set(compute_list, uniform_set, 0)
 	rd.compute_list_bind_uniform_set(compute_list, uniform_set_1, 1)
 	rd.compute_list_dispatch(compute_list, 128/8, 128/8, 1)

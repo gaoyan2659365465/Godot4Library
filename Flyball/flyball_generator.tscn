@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy7uju5xgfbdk"]
+
+[ext_resource type="Script" path="res://Flyball/flyball_generator.gd" id="1_hs5nu"]
+
+[node name="FlyballGenerator" type="Node2D"]
+script = ExtResource("1_hs5nu")

@@ -57,7 +57,7 @@ layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 //layout(std430, set = 0, binding = 0) uniform MyData{
 //	int a;
 //}mydata;
-// std430只能用来修饰buffer,uniform可以使用std430或std140
+// std430只能用来修饰buffer,uniform可以使用std140
 // std430表述数据内存比较紧凑，std140表述数据内存不紧凑，兼容性更好
 // std430或std140只能用在结构体上，缓冲区
 
@@ -88,12 +88,28 @@ layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
 layout(set = 0, binding = 0) uniform sampler2D base_image;
 layout(rgba8, set = 1, binding = 0) uniform restrict writeonly image2D output_image;
 
+layout(push_constant) uniform restrict MyDataBuffer {
+	ivec2 texture_size; // 图像尺寸
+    ivec2 query_pos; // 查询位置
+    int op_flag; // 操作类型标志
+    int display_mode; // 显示模式标志
+    int pass_counter; // 通过计数器
+    float threshold; // 阈值
+    vec4 color_target; // 颜色目标
+}
+my_data_buffer;
+
+//1、uniform的数组需要有索引，buffer的数组不需要
+//2、uniform不能写只能读，buffer可以读写
+//3、uniform不能使用std430，buffer可以使用std430，数据尺寸相差4倍
+
 
 void main() {
 	ivec2 st = ivec2(gl_GlobalInvocationID.xy);
-	vec2 uv = vec2(st) / imageSize(output_image);
+	vec2 uv = vec2(st) / my_data_buffer.texture_size;
 	vec4 mask_color = texture(base_image, uv*0.5);
 	imageStore(output_image, st, mask_color);
+	
 }
 
 
