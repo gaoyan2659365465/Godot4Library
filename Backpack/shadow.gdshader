@@ -6,4 +6,3 @@ void fragment() {
 	vec4 tex_color = texture(TEXTURE,UV);
 	COLOR = vec4(color.rgb,color.a * tex_color.a);
 }
-

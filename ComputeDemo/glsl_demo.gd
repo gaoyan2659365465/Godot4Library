@@ -274,4 +274,3 @@ func _on_color_picker_button_color_changed(color: Color) -> void:
 func _on_h_slider_4_value_changed(value: float) -> void:
 	shader_parameter.DisplayMode = value
 	floodingPrepass()
-

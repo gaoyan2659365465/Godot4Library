@@ -110,6 +110,3 @@ func _draw() -> void:
 			draw_line(i[0], i[1], Color.WHITE, 1)
 			draw_line(i[1], i[2], Color.WHITE, 1)
 			draw_line(i[2], i[0], Color.WHITE, 1)
-
-
-
