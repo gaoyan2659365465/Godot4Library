@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://jv1kbck8xfey"]
+
+[ext_resource type="Script" path="res://格子动效/格子.gd" id="1_c2x4o"]
+[ext_resource type="AudioStream" uid="uid://drplx5ptho557" path="res://格子动效/啵.mp3" id="2_2hj8k"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p2oyd"]
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="格子" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+mouse_filter = 2
+script = ExtResource("1_c2x4o")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+
+[node name="Panel" type="Panel" parent="TextureButton"]
+layout_mode = 0
+offset_right = 50.0
+offset_bottom = 50.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p2oyd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_2hj8k")
+volume_db = -1.486
+pitch_scale = 1.12
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

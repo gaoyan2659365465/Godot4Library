@@ -84,7 +84,6 @@ mouse_filter = 2
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PenController" parent="CanvasLayer" instance=ExtResource("5_jvd34")]
-metadata/_edit_lock_ = true
 
 [node name="CheckButton" type="CheckButton" parent="CanvasLayer"]
 auto_translate_mode = 1

@@ -18,13 +18,43 @@ class PushConstants:
 	var Threshold:float = 0.25
 	var ColorTarget:Color = Color.GREEN
 
+var shaderSCRIPT = """
+#version 450
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 0) uniform sampler2D base_image;
+layout(rgba8, set = 1, binding = 0) uniform restrict writeonly image2D output_image;
+
+layout(push_constant) uniform restrict MyDataBuffer {
+	ivec2 texture_size;
+	ivec2 query_pos;
+	int op_flag;
+	int display_mode;
+	int pass_counter;
+	float threshold;
+	vec4 color_target;
+}
+my_data_buffer;
+void main() {
+	ivec2 st = ivec2(gl_GlobalInvocationID.xy);
+	vec2 uv = vec2(st) / my_data_buffer.texture_size;
+	vec4 mask_color = texture(base_image, uv*0.5);
+	imageStore(output_image, st, mask_color);
+	
+}
+"""
 
 func _ready() -> void:
 	# 创建渲染设备
 	rd = RenderingServer.get_rendering_device()
-	var shader_file := load("res://ComputeDemo2/compute_shader.glsl")
-	var shader_spirv: RDShaderSPIRV = shader_file.get_spirv()
+	#var shader_file := load("res://ComputeDemo2/compute_shader.glsl")
+	var s = RDShaderSource.new()
+	s.source_compute = shaderSCRIPT
+	var shader_spirv = rd.shader_compile_spirv_from_source(s,false)
+	#var shader_byte = rd.shader_compile_binary_from_spirv(shader_spirv)
+	
+	#var shader_spirv: RDShaderSPIRV = shader_file.get_spirv()
 	# 创建着色器实例
+	#shader_rd = rd.shader_create_from_bytecode(shader_byte)
 	shader_rd = rd.shader_create_from_spirv(shader_spirv)
 	# 创建计算管线
 	pipeline_rd = rd.compute_pipeline_create(shader_rd)

@@ -9,8 +9,6 @@ script/source = "extends Node2D
 
 func _ready() -> void:
 	$Sprite2D/ShardEmitter.call_deferred(\"shatter\")
-
-
 "
 
 [sub_resource type="Gradient" id="Gradient_0wges"]

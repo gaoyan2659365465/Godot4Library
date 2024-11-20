@@ -21,4 +21,3 @@ func _unhandled_input(event):
 			var mouse_offset = event.position - self.pressed_mouse_pos
 			self.position = self.camera_pos - mouse_offset
 		
-
