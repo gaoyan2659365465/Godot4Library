@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2vouk2xhn0ik"]
+
+[ext_resource type="Script" path="res://大章鱼蠕动/2D骨骼动画/创建骨骼.gd" id="1_nq8on"]
+
+[node name="创建骨骼" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nq8on")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]

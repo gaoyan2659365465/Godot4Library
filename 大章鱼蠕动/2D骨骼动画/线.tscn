@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://6378twe3n6td"]
+
+[ext_resource type="Script" path="res://大章鱼蠕动/2D骨骼动画/线.gd" id="1_pr1ty"]
+
+[node name="线" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pr1ty")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 1.0
+default_color = Color(0.232265, 0.842114, 1, 1)

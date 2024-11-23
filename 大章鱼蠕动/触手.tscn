@@ -1,0 +1,100 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7h3xy67ss1u6"]
+
+[ext_resource type="Script" path="res://大章鱼蠕动/显示所有点.gd" id="1_8shpu"]
+[ext_resource type="Texture2D" uid="uid://b13bc3bp2g60v" path="res://大章鱼蠕动/触手.png" id="1_rnivb"]
+[ext_resource type="Shader" path="res://大章鱼蠕动/2D骨骼动画/PS棋盘格.gdshader" id="2_6kquj"]
+[ext_resource type="Script" path="res://大章鱼蠕动/2D骨骼动画/camera_2d.gd" id="3_3gw66"]
+[ext_resource type="PackedScene" uid="uid://c2vouk2xhn0ik" path="res://大章鱼蠕动/2D骨骼动画/创建骨骼.tscn" id="5_tpbqt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vk4l7"]
+shader = ExtResource("2_6kquj")
+shader_parameter/size = 40.0
+shader_parameter/alpha = 1.0
+shader_parameter/color1 = Color(0.457031, 0.457031, 0.457031, 1)
+shader_parameter/color2 = Color(0.308594, 0.308594, 0.308594, 1)
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/scale = Vector2(0, 0)
+shader_parameter/rect_size = Vector2(0, 0)
+shader_parameter/follow_movement = false
+shader_parameter/follow_scale = false
+
+[sub_resource type="Gradient" id="Gradient_ui58h"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qewqn"]
+gradient = SubResource("Gradient_ui58h")
+width = 2048
+height = 2048
+
+[node name="触手" type="Node2D"]
+script = ExtResource("1_8shpu")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(602, 281)
+script = ExtResource("3_3gw66")
+
+[node name="背景棋盘格" type="Sprite2D" parent="Camera2D"]
+material = SubResource("ShaderMaterial_vk4l7")
+texture = SubResource("GradientTexture2D_qewqn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -42.0
+offset_right = 117.0
+offset_bottom = -2.0
+text = "清除所有"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -97.0
+offset_right = 117.0
+offset_bottom = -57.0
+text = "图片转网格"
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -156.0
+offset_right = 117.0
+offset_bottom = -116.0
+text = "粘贴图片"
+
+[node name="Button4" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = -156.0
+offset_right = 251.0
+offset_bottom = -116.0
+toggle_mode = true
+text = "创建骨骼"
+
+[node name="Button5" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = -97.0
+offset_right = 251.0
+offset_bottom = -57.0
+text = "自动权重"
+
+[node name="图片" type="Sprite2D" parent="."]
+position = Vector2(514.5, 217.5)
+texture = ExtResource("1_rnivb")
+
+[node name="创建骨骼" parent="." instance=ExtResource("5_tpbqt")]
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="toggled" from="Control/Button4" to="." method="_on_button_4_toggled"]
+[connection signal="pressed" from="Control/Button5" to="." method="_on_button_5_pressed"]
+
+[editable path="创建骨骼"]

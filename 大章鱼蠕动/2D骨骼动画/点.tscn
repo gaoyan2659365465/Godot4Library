@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b84mfvl3byfm8"]
+
+[ext_resource type="Script" path="res://大章鱼蠕动/2D骨骼动画/点.gd" id="1_aja3a"]
+
+[sub_resource type="Gradient" id="Gradient_61vce"]
+offsets = PackedFloat32Array(0.813853, 0.95671, 1)
+colors = PackedColorArray(0, 0.600625, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gj01w"]
+gradient = SubResource("Gradient_61vce")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="点" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_aja3a")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+texture_normal = SubResource("GradientTexture2D_gj01w")
+ignore_texture_size = true
+stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
