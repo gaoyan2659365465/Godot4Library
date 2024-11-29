@@ -23,7 +23,7 @@ func 创建骨骼(pos):
 	b.owner = self.get_parent()
 	游标 = b
 	b.global_position = pos
-	b.rest = Transform2D(Vector2(1.0, 0.0), Vector2(0.0, 1.0), Vector2(b.position.x, b.position.y))
+	b.rest = Transform2D(b.rotation, Vector2(b.position.x, b.position.y))
 
 func _unhandled_input(event):
 	if not 允许创建:

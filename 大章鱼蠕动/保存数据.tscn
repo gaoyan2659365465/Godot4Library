@@ -20,7 +20,7 @@ bones = ["@Bone2D@559", PackedFloat32Array(0.00215689, 0.00256842, 0.00260285, 0
 
 [node name="@Bone2D@559" type="Bone2D" parent="创建骨骼/Skeleton2D" index="0"]
 position = Vector2(85, 276)
-rotation = 0.0713841
+rotation = 0.0858814
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 85, 276)
 auto_calculate_length_and_angle = false
@@ -29,7 +29,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@561" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559"]
 position = Vector2(79, -69)
-rotation = 0.0385797
+rotation = 0.0679434
 rest = Transform2D(1, 0, 0, 1, 79, -69)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -37,7 +37,8 @@ bone_angle = 0.0
 
 [node name="@Bone2D@563" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561"]
 position = Vector2(79, -53)
-rotation = -0.0036704
+rotation = 0.0333705
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 79, -53)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -45,8 +46,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@565" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563"]
 position = Vector2(73, -41)
-rotation = -0.0450218
-scale = Vector2(1, 1)
+rotation = -0.00937266
 rest = Transform2D(1, 0, 0, 1, 73, -41)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -54,7 +54,8 @@ bone_angle = 0.0
 
 [node name="@Bone2D@567" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565"]
 position = Vector2(82, -29)
-rotation = -0.0753503
+rotation = -0.049821
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 82, -29)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -62,7 +63,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@569" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567"]
 position = Vector2(89, -15)
-rotation = -0.0872305
+rotation = -0.0780715
 rest = Transform2D(1, 0, 0, 1, 89, -15)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -70,8 +71,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@571" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569"]
 position = Vector2(93, 23)
-rotation = -0.0777535
-scale = Vector2(1, 1)
+rotation = -0.0872073
 rest = Transform2D(1, 0, 0, 1, 93, 23)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -79,7 +79,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@573" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571"]
 position = Vector2(81, 47)
-rotation = -0.0492398
+rotation = -0.0749918
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 81, 47)
 auto_calculate_length_and_angle = false
@@ -88,7 +88,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@575" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573"]
 position = Vector2(66, 57)
-rotation = -0.00867048
+rotation = -0.0444156
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 66, 57)
 auto_calculate_length_and_angle = false
@@ -97,7 +97,8 @@ bone_angle = 0.0
 
 [node name="@Bone2D@577" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573/@Bone2D@575"]
 position = Vector2(37, 74)
-rotation = 0.0340217
+rotation = -0.00296495
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 37, 74)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -105,7 +106,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@579" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573/@Bone2D@575/@Bone2D@577"]
 position = Vector2(53, 59)
-rotation = 0.0683842
+rotation = 0.0392116
 rest = Transform2D(1, 0, 0, 1, 53, 59)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -113,7 +114,7 @@ bone_angle = 0.0
 
 [node name="@Bone2D@581" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573/@Bone2D@575/@Bone2D@577/@Bone2D@579"]
 position = Vector2(55, 31)
-rotation = 0.0860038
+rotation = 0.0717878
 rest = Transform2D(1, 0, 0, 1, 55, 31)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -121,7 +122,8 @@ bone_angle = 0.0
 
 [node name="@Bone2D@583" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573/@Bone2D@575/@Bone2D@577/@Bone2D@579/@Bone2D@581"]
 position = Vector2(55, -12)
-rotation = 0.0825667
+rotation = 0.0867879
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 55, -12)
 auto_calculate_length_and_angle = false
 length = 16.0
@@ -129,7 +131,8 @@ bone_angle = 0.0
 
 [node name="@Bone2D@585" type="Bone2D" parent="创建骨骼/Skeleton2D/@Bone2D@559/@Bone2D@561/@Bone2D@563/@Bone2D@565/@Bone2D@567/@Bone2D@569/@Bone2D@571/@Bone2D@573/@Bone2D@575/@Bone2D@577/@Bone2D@579/@Bone2D@581/@Bone2D@583"]
 position = Vector2(26, -40)
-rotation = 0.0589144
+rotation = 0.0805392
+scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 26, -40)
 auto_calculate_length_and_angle = false
 length = 16.0
