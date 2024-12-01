@@ -206,8 +206,6 @@ func 创建网格(json,k,s,sk):
 	# 遍历所有骨骼
 	for i in s:
 		#var 骨骼号 = s[i].get_index_in_skeleton()
-		
-		new_bones.append(k.get_path_to(s[i]))
 		var new_qz:PackedFloat32Array = []
 		for a in range(_poly.polygon.size()):# a是遍历的当前点号
 			var 权重 = 0.0
@@ -216,7 +214,14 @@ func 创建网格(json,k,s,sk):
 				if ii['bone_id'] == _sn:
 					权重 = ii['weight']
 			new_qz.append(权重)
-		new_bones.append(new_qz)
+		# 判断权重是否部为0，删去
+		var _isq = false
+		for _q in new_qz:
+			if _q != 0:
+				_isq = true
+		if _isq:
+			new_bones.append(k.get_path_to(s[i]))
+			new_bones.append(new_qz)
 		_sn += 1
 		
 	_poly.bones = new_bones	
