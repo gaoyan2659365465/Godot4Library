@@ -1,0 +1,15 @@
+[remap]
+
+importer="my.psd.plugin"
+type="PortableCompressedTexture2D"
+uid="uid://c0wsoqatsumfh"
+path="res://.godot/imported/大鸟.psd-fca5930caba75c84e949f5a8bfef8f63.res"
+
+[deps]
+
+source_file="res://PSD/大鸟.psd"
+dest_files=["res://.godot/imported/大鸟.psd-fca5930caba75c84e949f5a8bfef8f63.res"]
+
+[params]
+
+my_option=false

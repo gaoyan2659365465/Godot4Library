@@ -1,0 +1,15 @@
+[remap]
+
+importer="my.psd.plugin"
+type="PortableCompressedTexture2D"
+uid="uid://dy3tgcura8lbv"
+path="res://.godot/imported/map1.psd-da2de6e09ad271f9fd3fa8d10000cc50.res"
+
+[deps]
+
+source_file="res://TilemapDemo/map1.psd"
+dest_files=["res://.godot/imported/map1.psd-da2de6e09ad271f9fd3fa8d10000cc50.res"]
+
+[params]
+
+my_option=false
