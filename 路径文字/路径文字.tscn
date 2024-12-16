@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://wa63ss870lc7"]
+
+[ext_resource type="Script" path="res://路径文字/路径文字.gd" id="1_anyd4"]
+
+[sub_resource type="Curve2D" id="Curve2D_bjy3u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 38, 295, -222, -8, 222, 8, 274, 79, 0, 0, 0, 0, 696, 232, 0, 0, 0, 0, 868, 48)
+}
+point_count = 4
+
+[sub_resource type="SystemFont" id="SystemFont_2dg0b"]
+
+[node name="路径文字" type="Path2D"]
+position = Vector2(27, -6)
+curve = SubResource("Curve2D_bjy3u")
+script = ExtResource("1_anyd4")
+text = "1234569abc"
+"字体尺寸" = 56
+"字体颜色" = Color(0.976201, 0.409445, 1, 1)
+font = SubResource("SystemFont_2dg0b")
+pxSpacing = 0.055
+offset = 0.063
